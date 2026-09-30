@@ -1,0 +1,15 @@
+.env
+.env.*
+!.env.example
+.venv
+data
+video
+screenshots
+tests
+scripts
+.pytest_cache
+__pycache__
+*.log
+*.pid
+.site-memory.port
+.git

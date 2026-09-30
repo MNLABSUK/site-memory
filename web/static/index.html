@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f1216" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Site Memory · MN Labs Installs</title>
+  <link rel="icon" href="/static/icon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css?v=2" />
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav" aria-label="Main">
+      <div class="nav-brand">
+        <img src="/static/icon.svg" alt="" width="34" height="34" />
+        <div><strong>Site Memory</strong><span>MN Labs Installs</span></div>
+      </div>
+      <a class="nav-item" href="#arrive" data-view="arrive"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span>Arrive</span></a>
+      <a class="nav-item" href="#capture" data-view="capture"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Capture</span></a>
+      <a class="nav-item" href="#route" data-view="route"><svg viewBox="0 0 24 24"><path d="M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4ZM18 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M6 15V9a4 4 0 0 1 4-4h2M18 9v6a4 4 0 0 1-4 4h-2"/></svg><span>Route</span></a>
+      <a class="nav-item" href="#skills" data-view="skills"><svg viewBox="0 0 24 24"><path d="M9 11l2 2 4-4"/><rect x="4" y="3" width="16" height="18" rx="2"/></svg><span>Skills</span></a>
+      <a class="nav-item" href="#review" data-view="review"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Review</span><b id="reviewBadge" class="badge hidden">0</b></a>
+      <div class="nav-foot" id="navFoot"></div>
+    </nav>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-brand"><img src="/static/icon.svg" alt="" width="28" height="28" /><strong>Site Memory</strong></div>
+        <button id="statusPill" class="status-pill" type="button"><i></i><span>Connecting…</span></button>
+      </header>
+
+      <div id="demoBanner" class="demo-banner hidden" role="note"></div>
+      <main id="views">
+        <!-- ARRIVE -->
+        <section class="view" id="view-arrive">
+          <div class="hero">
+            <p class="eyebrow">Arrival brief</p>
+            <h1>Where are you?</h1>
+            <form id="arriveForm" class="searchbar" autocomplete="off">
+              <input id="arriveInput" type="search" placeholder="I'm at 14 Oak St, what do I need to know?" aria-label="Address or question" />
+              <button class="btn hivis" type="submit">Brief me</button>
+            </form>
+            <div id="arriveChips" class="chip-row"></div>
+          </div>
+          <div id="arriveOut"></div>
+        </section>
+
+        <!-- CAPTURE -->
+        <section class="view" id="view-capture">
+          <div class="hero">
+            <p class="eyebrow">Quick capture</p>
+            <h1>What's fitted where?</h1>
+            <p class="lede">Type it like a text to yourself. Nemotron sorts it into assets, access and dates. Nothing is saved until you approve it.</p>
+          </div>
+          <div class="card">
+            <label class="field-label" for="capProperty">Property</label>
+            <select id="capProperty"></select>
+            <div id="capNew" class="grid2 hidden">
+              <input id="capAddress" placeholder="Address, e.g. 5 Hazel Mews" />
+              <input id="capTown" placeholder="Town + postcode" />
+            </div>
+            <label class="field-label" for="capText">Note</label>
+            <textarea id="capText" rows="6" placeholder="Fitted Hikvision turret over the back door, cable clipped along the extension into the loft. New key safe by the side gate, code 5519. Boiler service due 12/10/2026."></textarea>
+            <div class="chip-row small" id="capStarters">
+              <button type="button" class="chip" data-ins="Fitted ">Fitted…</button>
+              <button type="button" class="chip" data-ins="Cable route: ">Cable route…</button>
+              <button type="button" class="chip" data-ins="Access: ">Access…</button>
+              <button type="button" class="chip" data-ins="Service due ">Service due…</button>
+              <button type="button" class="chip" data-ins="Warranty until ">Warranty…</button>
+              <button type="button" class="chip" data-ins="Key safe code ">Key safe code…</button>
+            </div>
+            <div id="capPrivacy" class="privacy"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Codes and passwords are split out <b>before any AI call</b> and encrypted. Nemotron never sees them.</span></div>
+            <button id="capGo" class="btn hivis wide" type="button">Propose memory</button>
+          </div>
+          <div id="capOut"></div>
+        </section>
+
+        <!-- ROUTE -->
+        <section class="view" id="view-route">
+          <div class="hero row">
+            <div>
+              <p class="eyebrow">Nightly route briefing</p>
+              <h1 id="routeTitle">Tomorrow</h1>
+              <p class="lede" id="routeLede"></p>
+            </div>
+            <button id="nightlyBtn" class="btn hivis" type="button">Run nightly pass</button>
+          </div>
+          <div id="routeOut"></div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="view" id="view-skills">
+          <div class="hero">
+            <p class="eyebrow">Apprentice Skills</p>
+            <h1>How you do the job, written down.</h1>
+            <p class="lede">Learned from your notes and your edits. Every new skill and every new version goes through Review first.</p>
+          </div>
+          <div id="skillsOut"></div>
+        </section>
+
+        <!-- REVIEW -->
+        <section class="view" id="view-review">
+          <div class="hero">
+            <p class="eyebrow">Review</p>
+            <h1>You decide what it remembers.</h1>
+            <div class="seg" id="reviewSeg">
+              <button type="button" data-s="pending" class="on">Pending</button>
+              <button type="button" data-s="later">Later</button>
+              <button type="button" data-s="approved,edited,left">Done</button>
+            </div>
+          </div>
+          <div id="reviewOut"></div>
+          <div class="card journal">
+            <h3>Journal</h3>
+            <div id="journalOut"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="sheetBackdrop" class="backdrop hidden"></div>
+  <div id="sheet" class="sheet hidden" role="dialog" aria-modal="true"><div class="sheet-grip"></div><div id="sheetBody"></div></div>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="/static/app.js?v=3"></script>
+</body>
+</html>

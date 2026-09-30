@@ -1,0 +1,27 @@
+# Python / tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.DS_Store
+
+# Secrets: never commit
+.env
+.env.*
+!.env.example
+*.key
+
+# Runtime data (memory, encrypted vault + its key, skill files)
+data/*
+!data/.gitkeep
+
+# Local run files
+site-memory.log
+site-memory.pid
+.site-memory.port
+
+# Large media (the demo video lives on YouTube)
+video/
+*.mp4
+*.mov
+screenshots/*.tmp

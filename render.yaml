@@ -1,0 +1,18 @@
+# Render Blueprint for the public demo (free plan). Deploy: https://render.com/deploy?repo=https://github.com/MNLABSUK/site-memory
+services:
+  - type: web
+    name: site-memory
+    runtime: docker
+    plan: free
+    region: frankfurt
+    healthCheckPath: /api/status
+    autoDeploy: true
+    envVars:
+      - key: NEBIUS_API_KEY        # Nebius Token Factory key: set it in the dashboard (secret)
+        sync: false
+      - key: TAVILY_API_KEY        # optional: enables "Find manual + firmware"
+        sync: false
+      - key: SITE_MEMORY_DEMO
+        value: "1"
+      - key: SITE_MEMORY_DEMO_RESET_MIN
+        value: "30"
