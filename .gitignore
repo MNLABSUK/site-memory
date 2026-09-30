@@ -21,7 +21,7 @@ site-memory.pid
 .site-memory.port
 
 # Large media (the demo video lives on YouTube)
-video/
+/video/
 *.mp4
 *.mov
 screenshots/*.tmp
