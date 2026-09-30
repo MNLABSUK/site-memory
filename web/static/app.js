@@ -202,7 +202,7 @@
         <div class="row-item"><div><div class="t">Mode</div><div class="d">${s.mode === "nemotron-live" ? "Live: Nebius Token Factory" : "Dry-run: local heuristics (set NEBIUS_API_KEY in .env)"}</div></div></div>
         <div class="row-item"><div><div class="t">Door-step model</div><div class="d mono">${esc(s.model)}</div></div></div>
         <div class="row-item"><div><div class="t">Skills model</div><div class="d mono">${esc(s.skills_model)}</div></div></div>
-        <div class="row-item"><div><div class="t">Nightly model</div><div class="d mono">${esc(s.nightly_model)} · runs at ${esc(s.nightly_at)}</div></div></div>
+        <div class="row-item"><div><div class="t">Nightly model</div><div class="d mono">${esc(s.nightly_model)} · ${s.nightly_at === "off" ? "automatic run off" : `runs itself at ${esc(s.nightly_at)}`}</div></div></div>
         <div class="row-item"><div><div class="t">Last live call</div><div class="d">${l ? `${esc(l.task)} · ${esc(shortModel(l.model))} · ${l.latency_ms} ms · ${l.prompt_tokens || "?"}→${l.completion_tokens || "?"} tokens · ${esc(fmtTime(l.at))}` : "None yet"}</div></div></div>
       </div>
       <div class="privacy"><svg viewBox="0 0 24 24">${ICON.lock}</svg><span>${s.demo ? `This is the <b>public demo</b>: shared MN Labs sample data that resets every ${esc(s.demo.reset_every_min)} minutes, with rate limits. Installed on your own Mac, memory lives in <b>data/</b> and never leaves it.` : `Memory lives in <b>data/</b> on this Mac.`} Codes are encrypted in a separate vault and stripped from every prompt before it leaves the machine. Nothing is saved to memory or skills without your approval.</span></div>
@@ -379,7 +379,7 @@
     $("routeTitle").textContent = fmtDate(route.date, true);
     $("routeLede").innerHTML = nightly
       ? `${esc(nightly.headline)}<br><span class="muted" style="font-size:13px">${srcLabel(nightly.source, nightly.model)} · generated ${esc(fmtTime(nightly.generated_at))}</span>`
-      : `${route.jobs.length} job${route.jobs.length !== 1 ? "s" : ""}. Run the nightly pass for a Nemotron 3 Super prep briefing (it also runs itself at ${esc(S.status ? S.status.nightly_at : "20:30")}).`;
+      : `${route.jobs.length} job${route.jobs.length !== 1 ? "s" : ""}. Run the nightly pass for a Nemotron 3 Super prep briefing${S.status && S.status.nightly_at === "off" ? "." : ` (it also runs itself at ${esc(S.status ? S.status.nightly_at : "20:30")})`}.`;
     const nj = Object.fromEntries(((nightly && nightly.jobs) || []).map((j) => [j.job_id, j]));
     const stops = route.jobs.map((it) => {
       const j = it.job, p = it.property, pid = p.id; const n = nj[j.id];
