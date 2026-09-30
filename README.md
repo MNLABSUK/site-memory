@@ -9,7 +9,9 @@
 
 Nebius × NVIDIA Global AI Hackathon 2026 · **Personal AI track** · MN Labs Ltd (Michael Napier) · MIT licence
 
-**▶ Live demo:** _being deployed (link coming shortly)_ &nbsp;·&nbsp; **🎬 Video (under 3 min):** _coming shortly_
+**🎬 Demo video (2:12):** https://youtu.be/82e5tz9OibI &nbsp;·&nbsp; **▶ Live demo:** _hosted link coming shortly (see [Hosted demo](#hosted-demo))_
+
+[![Watch the Site Memory demo on YouTube](https://img.youtube.com/vi/82e5tz9OibI/maxresdefault.jpg)](https://youtu.be/82e5tz9OibI)
 
 A one-person UK installer (CCTV, alarms, smart home, heating, electrical) carries hundreds of properties in their head: which NVR is in which loft, where the cable runs, whose dog is loose in the garden, when the boiler service falls due. And when they take on an apprentice or a sub, none of that know-how is written down. Site Memory keeps all of it on your own Mac. When you pull up outside a job and ask *"I'm at 14 Oak St, what do I need to know?"* you get a 30-second brief in which **every line links back to the note it came from**. The night before, **Nemotron 3 Super** plans tomorrow's route. And from your notes and edits it writes **Apprentice Skills**: versioned checklists your apprentice can follow.
 
