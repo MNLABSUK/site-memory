@@ -9,7 +9,7 @@
 
 Nebius × NVIDIA Global AI Hackathon 2026 · **Personal AI track** · MN Labs Ltd (Michael Napier) · MIT licence
 
-**🎬 Demo video (2:12):** https://youtu.be/82e5tz9OibI &nbsp;·&nbsp; **▶ Live demo:** _hosted link coming shortly (see [Hosted demo](#hosted-demo))_
+**🎬 Demo video (2:12):** https://youtu.be/82e5tz9OibI &nbsp;·&nbsp; **▶ Live demo:** https://site-memory.onrender.com (see [Hosted demo](#hosted-demo))
 
 [![Watch the Site Memory demo on YouTube](https://img.youtube.com/vi/82e5tz9OibI/maxresdefault.jpg)](https://youtu.be/82e5tz9OibI)
 
@@ -89,7 +89,7 @@ The public demo (link at the top) is the same app in a Docker container (`Docker
 - **Invented MN Labs Installs data only**, restored to the seed **every 30 minutes** (and from the status pill at any time). A banner says so.
 - **Rate limits** (`site_memory/demo.py`): 30 actions per minute and 20 Nemotron calls per 10 minutes per visitor, plus global hourly and daily Nemotron ceilings to protect the Token Factory key. Over the limit you get a clear message, never a spinner.
 - The **Nebius key lives in the host's secret environment**, never in the repo or the image.
-- It's a free-tier instance, so the first request after a quiet spell can take ~30–60 s while it wakes up.
+- It's a free-tier Render instance, so the first request after a quiet spell can take ~30–50 s while it wakes up.
 
 Run the same container yourself:
 
